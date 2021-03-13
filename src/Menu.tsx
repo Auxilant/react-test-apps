@@ -5,7 +5,7 @@ function Menu() {
         <div className="menu">
             <h1>react-test-apps</h1>
             <ul>
-                
+                <li><Link to="/order-details">Order details page</Link></li>
             </ul>
         </div>
     )

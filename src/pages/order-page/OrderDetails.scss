@@ -1,0 +1,11 @@
+.order-details {
+    margin: 10px auto;
+    padding: 10px;
+    color: darkblue;
+    width: 777px;
+
+    .order-basic-info {
+        display: flex;
+        justify-content: space-between;
+    }
+}
