@@ -1,11 +1,11 @@
-export interface Order {
+export interface OrderData {
     id: number,
     address: string,
     date: string,
-    items: OrderItem[],
+    items: OrderItemData[],
 }
 
-export interface OrderItem {
+export interface OrderItemData {
     id: number,
     name: string,
     price: number,

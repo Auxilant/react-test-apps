@@ -1,6 +1,6 @@
-import { Order } from './interfaces/Order'
+import { OrderData } from './interfaces/OrderData'
 
-export const order: Order = {
+export const order: OrderData = {
     id: 132,
     address: "СПб, пр. Ленина, д.3, кв.1",
     date: new Date().toLocaleDateString("ru"),
