@@ -54,7 +54,7 @@ function OrderItem({ item, setItemQty, deleteItem, moveItem }:  OrderItemProps )
                 </div>
 
                 <span className="item-name">{item.name} </span>
-                <span className="item-price">{item.price} р. </span>
+                <span className="item-price">Цена (1): <br></br>{item.price} р. </span>
                 
                 <div className="qty-control">
                     <button onClick={() => setItemQty(item.id, item.qty - 1)} disabled={item.qty <= 1}>
@@ -74,11 +74,12 @@ function OrderItem({ item, setItemQty, deleteItem, moveItem }:  OrderItemProps )
             </div>
             <div className="delete-confirmation hidden">
                 <span>Удалить товар "{item.name}"?</span>
-                <button onClick={() => deleteItem(item.id)}>да</button>
-                <button onClick={toggleDeleteConfirm}>нет</button>
+                <div className="button-container">
+                    <button onClick={() => deleteItem(item.id)}>да</button>
+                    <button onClick={toggleDeleteConfirm}>нет</button>
+                </div>
             </div>
         </div >
-
     )
 }
 

@@ -14,10 +14,19 @@
     justify-content: space-between;
 }
 
+.order-items {
+    max-height: 510px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
 .order-item-container {
     width: 100%;
     height: 100px;
+    flex-shrink: 0;
     position: relative;
+    transition: all 1s linear;
 
     &>div {
         width: 100%;
@@ -42,9 +51,9 @@
     }
 
     button {
-        width: 25px;
-        height: 25px;
-        padding: 0;
+        width: 2rem;
+        height: 2rem;
+        padding: 0.6rem;
         border: none;
         background: none;
         outline: none;
@@ -56,6 +65,12 @@
             height: 100%;
             display: block;
         }
+
+        &:hover {
+            border: 2px solid black;
+            border-radius: 3px;
+            padding: 0.2rem;
+        }
     }
 
     &:hover button{
@@ -63,6 +78,8 @@
     }
 
     .move-button-container {
+        width: 20px;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -77,11 +94,11 @@
     }
 
     .item-name {
-        width: 10rem;
+        width: 8rem;
         text-align: left;
     }
     .item-price, .item-total {
-        width: 5em;
+        width: 6rem;
     }
 
     .qty-control {
@@ -95,7 +112,7 @@
 
     input {
         width: 3rem;
-        font-size: 2rem;
+        font-size: 1.5rem;
         border: none;
         /*Hiding arrows*/
         /*Chrome etc.*/
@@ -114,8 +131,15 @@
 .delete-confirmation {
     position: absolute;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+
+    .button-container {
+        width: 10rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 }
 
 
