@@ -1,23 +1,121 @@
 .order-details {
     margin: 10px auto;
     padding: 10px;
-    color: darkblue;
+    color: black;
     width: 600px;
 
-    .order-basic-info {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    input[type='number'] {
-        -moz-appearance:textfield;
-    }
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-    }
-
-    .hidden {
-        display: none;
+    h3 {
+        float: right;
     }
 }
+
+.order-basic-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-item-container {
+    width: 100%;
+    height: 100px;
+    position: relative;
+
+    &>div {
+        width: 100%;
+        height: 100%;
+    }
+    .hidden {
+        visibility: hidden;
+    }
+    &:not(:last-child) {
+        border-bottom: 2px solid lightgray;
+    }
+}
+
+.order-item-info {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span, input {
+        text-align: center;
+    }
+
+    button {
+        width: 25px;
+        height: 25px;
+        padding: 0;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+        opacity: 0;
+                
+        .button-icon {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+
+    &:hover button{
+        opacity: 1;
+    }
+
+    .move-button-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .item-image-container {
+        height: 100px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .item-name {
+        width: 10rem;
+        text-align: left;
+    }
+    .item-price, .item-total {
+        width: 5em;
+    }
+
+    .qty-control {
+        button {
+            font-size: 2rem;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input {
+        width: 3rem;
+        font-size: 2rem;
+        border: none;
+        /*Hiding arrows*/
+        /*Chrome etc.*/
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /*Firefox*/
+        &[type=number] {
+            -moz-appearance: textfield;
+        }
+    }
+}
+
+.delete-confirmation {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

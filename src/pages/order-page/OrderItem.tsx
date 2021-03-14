@@ -1,5 +1,10 @@
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent, MouseEvent } from 'react'
 import { OrderItemData } from '../../interfaces/OrderData'
+import upArrow from '../../images/up-arrow.svg'
+import downArrow from '../../images/down-arrow.svg'
+import plus from '../../images/plus.svg';
+import minus from '../../images/minus.svg';
+import close from '../../images/close.svg';
 
 interface OrderItemProps {
     item: OrderItemData, 
@@ -35,15 +40,37 @@ function OrderItem({ item, setItemQty, deleteItem, moveItem }:  OrderItemProps )
     return (
         <div className="order-item-container">
             <div className="order-item-info">
-                <button onClick={() => moveItem(item.id, 'UP')}>^</button>
-                <button onClick={() => moveItem(item.id, 'DOWN')}>v</button>
-                <img src={item.imgLink} alt={item.name}></img>
-                <span>{item.name} </span>
-                <span>{item.price} </span>
-                <button onClick={() => setItemQty(item.id, item.qty - 1)} disabled={item.qty <= 1}>-</button>
-                <input type="number" value={item.qty} onChange={handleInput} onBlur={handleZeros}></input>
-                <button onClick={() => setItemQty(item.id, item.qty + 1)}>+</button>
-                <button onClick={toggleDeleteConfirm}>x</button>
+                <div className="move-button-container">
+                    <button onClick={() => moveItem(item.id, 'UP')}>
+                        <img className="button-icon" src={upArrow} alt="up-arrow"></img>    
+                    </button>
+                    <button onClick={() => moveItem(item.id, 'DOWN')}>
+                        <img className="button-icon" src={downArrow} alt="down-arrow"></img> 
+                    </button>
+                </div>
+
+                <div className="item-image-container">
+                    <img className="item-image" src={item.imgLink} alt={item.name}></img>
+                </div>
+
+                <span className="item-name">{item.name} </span>
+                <span className="item-price">{item.price} р. </span>
+                
+                <div className="qty-control">
+                    <button onClick={() => setItemQty(item.id, item.qty - 1)} disabled={item.qty <= 1}>
+                        <img className="button-icon" src={minus} alt="minus"></img>        
+                    </button>
+                    <input type="number" value={item.qty} onChange={handleInput} onBlur={handleZeros}></input>
+                    <button onClick={() => setItemQty(item.id, item.qty + 1)}>
+                        <img className="button-icon" src={plus} alt="plus"></img>  
+                    </button>
+                </div>
+
+                <span className="item-total">{item.qty * item.price} р.</span>
+
+                <button onClick={toggleDeleteConfirm}>
+                    <img className="button-icon" src={close} alt="close"></img>  
+                </button>
             </div>
             <div className="delete-confirmation hidden">
                 <span>Удалить товар "{item.name}"?</span>
