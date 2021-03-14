@@ -21,6 +21,21 @@ function OrderDetails({orderData}: {orderData: OrderData}) {
         setItems(newItems);
     }
 
+    const moveItem = (id:number, direction:string) => {
+        const index = items.findIndex(item => item.id === id);
+        const newItems = items.slice();
+        const element = newItems[index];
+        if (direction === 'UP' && index > 0) {
+            newItems.splice(index, 1);
+            newItems.splice(index - 1, 0, element);
+        }
+        else if (direction === 'DOWN' && index < items.length - 1) {
+            newItems.splice(index, 1);
+            newItems.splice(index + 1, 0, element);
+        }
+        setItems(newItems);
+    }
+
     const total = items.reduce(
         (sum, item) => sum + item.qty * item.price, 0
     );
@@ -35,7 +50,7 @@ function OrderDetails({orderData}: {orderData: OrderData}) {
             <h2>Товары:</h2>
             <div className="order-items">
                 {items.map (item => (
-                    <OrderItem key={item.id} item={item} setItemQty={setItemQty} deleteItem={deleteItem}/>
+                    <OrderItem key={item.id} item={item} setItemQty={setItemQty} deleteItem={deleteItem} moveItem={moveItem}/>
                 ))}
             </div>
             <h3>Итого: {total} р.</h3>

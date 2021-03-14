@@ -1,11 +1,14 @@
 import { ChangeEvent, MouseEvent } from 'react';
 import { OrderItemData } from '../../interfaces/OrderData'
 
-function OrderItem(
-    { item, setItemQty, deleteItem }:  {
-        item: OrderItemData, 
-        setItemQty:(id: number, qty: number) => void ,
-        deleteItem:(id: number) => void} ) {
+interface OrderItemProps {
+    item: OrderItemData, 
+    setItemQty:(id: number, qty: number) => void ,
+    deleteItem:(id: number) => void,
+    moveItem:(id: number, direction: string) => void,
+}
+
+function OrderItem({ item, setItemQty, deleteItem, moveItem }:  OrderItemProps ) {
     const handleInput = (e: ChangeEvent) => {
         let element = e.target as HTMLInputElement;
         let newQty = +element.value;
@@ -32,6 +35,8 @@ function OrderItem(
     return (
         <div className="order-item-container">
             <div className="order-item-info">
+                <button onClick={() => moveItem(item.id, 'UP')}>^</button>
+                <button onClick={() => moveItem(item.id, 'DOWN')}>v</button>
                 <span>{item.name} </span>
                 <span>{item.price} </span>
                 <button onClick={() => setItemQty(item.id, item.qty - 1)} disabled={item.qty <= 1}>-</button>
