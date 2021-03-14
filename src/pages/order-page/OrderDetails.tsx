@@ -16,6 +16,11 @@ function OrderDetails({orderData}: {orderData: OrderData}) {
         setItems(newItems);
     }
 
+    const deleteItem = (id:number) => {
+        const newItems = items.filter(item => item.id !== id);
+        setItems(newItems);
+    }
+
     const total = items.reduce(
         (sum, item) => sum + item.qty * item.price, 0
     );
@@ -30,7 +35,7 @@ function OrderDetails({orderData}: {orderData: OrderData}) {
             <h2>Товары:</h2>
             <div className="order-items">
                 {items.map (item => (
-                    <OrderItem key={item.id} item={item} setItemQty={setItemQty}/>
+                    <OrderItem key={item.id} item={item} setItemQty={setItemQty} deleteItem={deleteItem}/>
                 ))}
             </div>
             <h3>Итого: {total} р.</h3>
