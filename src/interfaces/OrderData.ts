@@ -10,4 +10,5 @@ export interface OrderItemData {
     name: string,
     price: number,
     qty: number,
+    imgLink: string;
 }

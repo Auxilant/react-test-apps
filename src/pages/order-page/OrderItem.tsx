@@ -37,6 +37,7 @@ function OrderItem({ item, setItemQty, deleteItem, moveItem }:  OrderItemProps )
             <div className="order-item-info">
                 <button onClick={() => moveItem(item.id, 'UP')}>^</button>
                 <button onClick={() => moveItem(item.id, 'DOWN')}>v</button>
+                <img src={item.imgLink} alt={item.name}></img>
                 <span>{item.name} </span>
                 <span>{item.price} </span>
                 <button onClick={() => setItemQty(item.id, item.qty - 1)} disabled={item.qty <= 1}>-</button>
